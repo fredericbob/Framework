@@ -1,5 +1,6 @@
 package etu1283.framework.servlet;
 
+import etu1283.framework.Mapping;
 import etu1283.util.Util;
 
 import jakarta.servlet.ServletException;
@@ -8,11 +9,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class FrontServlet extends HttpServlet {
 
-    String url;
-    Util util;
+    protected String url;
+    protected Util util;
+    private HashMap<String, Mapping> mappingUrls;
 
     @Override
     public void init() throws ServletException {
