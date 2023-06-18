@@ -5,5 +5,5 @@ cd "C:\Users\frédéric\Desktop\Web Dyn\TestFramework\WEB-INF\classes"
 javac -cp "C:\Users\frédéric\Desktop\Web Dyn\TestFramework\WEB-INF\lib\fw.jar" -d . *.java
 cd "C:\Users\frédéric\Desktop\Web Dyn\TestFramework"
 jar cvf "TestFramework.war" *
-copy "TestFramework.war" "C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps"
+copy "TestFramework.war" "C:\Program Files\Apache Software Foundation\Tomcat 10.1_Tomcat\webapps"
 del "TestFramework.war"

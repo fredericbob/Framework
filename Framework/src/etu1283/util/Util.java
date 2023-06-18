@@ -1,10 +1,24 @@
 package etu1283.util;
 
+import etu1283.framework.Mapping;
+import etu1283.framework.ModelView;
+import jakarta.servlet.http.HttpServletRequest;
+
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Util {
+
+    public ModelView invokeMethod(Mapping mapping) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Class<?> clazz = Class.forName(mapping.getClassName());
+        Object o = clazz.getDeclaredConstructor().newInstance();
+
+        return (ModelView) o.getClass().getMethod(mapping.getMethod()).invoke(o);
+    }
+
 
     public List<Class<?>> getAllClass(String path, String tomPath) throws ClassNotFoundException {
         List<Class<?>> classes = new ArrayList<>();
