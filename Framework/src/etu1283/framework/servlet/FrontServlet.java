@@ -2,6 +2,7 @@ package etu1283.framework.servlet;
 
 import etu1283.framework.Mapping;
 import etu1283.framework.MethodAnnotation;
+import etu1283.framework.ModelView;
 import etu1283.util.Util;
 
 import jakarta.servlet.ServletException;
@@ -66,5 +67,16 @@ public class FrontServlet extends HttpServlet {
 
     protected void processRequest (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         url = util.processUrl(req.getRequestURL().toString(), req.getContextPath());
+        try {
+            Mapping mapping = mappingUrls.get(url);
+
+            if (mapping == null) throw new Exception("Not Found");
+
+            ModelView mv = util.invokeMethod(mapping);
+            req.getRequestDispatcher(mv.getView()).forward(req, resp);
+
+        }catch (Exception e) {
+
+        }
     }
 }
